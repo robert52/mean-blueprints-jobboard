@@ -1,0 +1,86 @@
+<section>
+  <h2>
+    Total balance: {{ vm.balance.balance }}
+    <span>from {{ vm.balance.countMessage }}</span>
+  </h2>
+</section>
+
+<section class="well">
+  <form name="AddExpense" class="form-inline">
+    <div class="form-group">
+      <input type="text" name="name" class="form-control" ng-model="vm.newExpense.name" placeholder="name">
+    </div>
+    <div class="form-group">
+      <input type="number" name="value" class="form-control" ng-model="vm.newExpense.value" min="0.00" placeholder="0.00" step="0.01">
+    </div>
+    <div class="form-group">
+      <!-- <select name="category" class="form-control" ng-model="vm.newExpense.category" required="true">
+        <option value=''>Select category</option>
+        <option ng-repeat="category in vm.categories" value="{{category._id}}">{{category.name}}</option>
+      </select> -->
+      <div class="form-group">
+        <input type="text" name="category" class="form-control" ng-model="vm.categorySelect"
+        typeahead="category as category.name for category in vm.categories | filter:$viewValue | limitTo:8"
+        typeahead-editable="false"
+        typeahead-on-select="vm.setExpenseCategory($item)" placeholder="category name">
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-success" ng-click="vm.addExpense()">add expense</button>
+  </form>
+</section>
+
+<section class="well">
+  <form name="FilterExpenses" class="form-inline">
+
+    <!-- from date -->
+    <div class="input-group">
+      <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy"
+      ng-model="vm.filter.startDate"
+      min-date="vm.minDate" max-date="vm.maxDate"
+      is-open="vm.status.startDate" data-ng-click="vm.status.startDate = true"
+      ng-required="true" close-text="Close" placeholder="by start date" />
+    </div>
+
+    <!-- to date -->
+    <div class="input-group">
+      <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy"
+      ng-model="vm.filter.endDate"
+      min-date="vm.minDate" max-date="vm.maxDate"
+      is-open="vm.status.endDate" data-ng-click="vm.status.endDate = true"
+      ng-required="true" close-text="Close" placeholder="by end date"/>
+    </div>
+
+    <!-- by category -->
+    <div class="form-group">
+      <input type="text" class="form-control" ng-model="vm.categoryFilterSelect"
+      typeahead="category as category.name for category in vm.categories | filter:$viewValue | limitTo:8"
+      typeahead-editable="false"
+      typeahead-on-select="vm.setCategoryFilter($item)" placeholder="by category">
+    </div>
+
+    <button type="button" class="btn btn-default" ng-click="vm.filterExpenses()">filter</button>
+    <button type="button" class="btn btn-default" ng-show="vm.hasFilter" ng-click="vm.filterClear()">clear</button>
+  </form>
+</section>
+
+<section>
+  <table class="table table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Value</th>
+        <th>Category</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="expense in vm.expenses">
+        <td>{{ expense.createdAt | date : 'dd-MMMM-yyyy' }}</td>
+        <td>{{ expense.value }}</td>
+        <td>{{ expense.category.name }}</td>
+        <td>{{ expense.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

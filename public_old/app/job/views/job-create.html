@@ -1,0 +1,57 @@
+<section>
+  <div class="jumbotron">
+    <h2>Post a new job</h2>
+    <p class="lead">We are happy to see that you are growing.</p>
+  </div>
+  <form class="form-horizontal col-md-12">
+    <div class="form-group">
+      <label>Title</label>
+      <input class="form-control" type="text" ng-model="vm.job.title">
+    </div>
+    <div class="form-group">
+      <label>Industry</label>
+      <input type="text"
+      ng-model="vm.selected.industry"
+      uib-typeahead="industry as industry.name for industry in vm.industries | filter:{name:$viewValue} | limitTo:8"
+      typeahead-editable="false"
+      typeahead-select-on-exact="true"
+      typeahead-require-selection="true"
+      typeahead-on-select="vm.selectedIndustry($item)"
+      class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Country</label>
+      <input type="text"
+      ng-model="vm.selected.country"
+      uib-typeahead="country as country.name for country in ::vm.countries | filter:{name:$viewValue} | limitTo:8"
+      typeahead-editable="false"
+      typeahead-select-on-exact="true"
+      typeahead-require-selection="true"
+      typeahead-on-select="vm.selectedCountry($item)"
+      class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Job type</label>
+      <input type="text"
+      ng-model="vm.selected.type"
+      uib-typeahead="type as type.name for type in ::vm.jobtypes | filter:{name:$viewValue} | limitTo:8"
+      typeahead-editable="false"
+      typeahead-select-on-exact="true"
+      typeahead-require-selection="true"
+      typeahead-on-select="vm.selectedType($item)"
+      placeholder="Full time, part time, ..."
+      class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Summary</label>
+      <textarea class="form-control" ng-model="vm.job.summary" placeholder="A catchy short description of the job"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea class="form-control" ng-model="vm.job.description" placeholder="Tell the candidates what the job implies"></textarea>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success btn-block btn-lg" ng-click="vm.createJob()">Create job</button>
+    </div>
+  </form>
+</section

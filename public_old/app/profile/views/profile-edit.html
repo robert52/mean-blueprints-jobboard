@@ -1,0 +1,28 @@
+<section>
+
+  <div class="jumbotron">
+    <h2>Hi! {{::vm.user.name}}</h2>
+    <p class="lead">Your public e-mail is <span>{{::vm.user.email}}</span> <br> and this is your profile</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="profile-block" ng-repeat="block in vm.user.profile">
+        <profile-block ng-model="block"></profile-block>
+      </div>
+    </div>
+
+    <form class="form-horizontal col-md-12">
+      <div class="form-group">
+        <div class="col-md-12">
+          <input ng-model="vm.newBlock.title" type="text" class="form-control" placeholder="Block title">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-12">
+          <button ng-click="vm.addBlock()" class="btn btn-default btn-block">New block</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

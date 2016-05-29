@@ -1,0 +1,17 @@
+<form name="entryForm">
+  <div class="form-group">
+    <label>Title</label>
+    <input class="form-control" type="text" ng-model="vm.ngModel.title">
+  </div>
+  <div class="form-group">
+    <label>Sub title</label>
+    <input class="form-control" type="text" ng-model="vm.ngModel.subTitle">
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <textarea class="form-control" ng-model="vm.ngModel.description"></textarea>
+  </div>
+  <div class="form-group">
+    <button ng-click="vm.saveEntry()" ng-show="entryForm.$dirty" class="btn btn-success btn-block">Save</button>
+  </div>
+</form>

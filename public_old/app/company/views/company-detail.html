@@ -1,0 +1,23 @@
+<section class="company-detail">
+  <div class="company-header">
+    <h2>{{::vm.company.name}}</h2>
+    <p>
+      <span>{{::vm.company.country}}</span>
+      <span>·</span>
+      <span>{{::vm.company.address}}</span>
+    </p>
+    <hr>
+  </div>
+
+  <div class="company-description">
+    <h3>Description</h3>
+    <div>{{::vm.company.description}}</div>
+    <hr>
+  </div>
+
+  <section class="company-jobs-list">
+    <h3>Active jobs</h3>
+    <jobs data="vm.jobs"></jobs>
+    <hr>
+  </section>
+</section>

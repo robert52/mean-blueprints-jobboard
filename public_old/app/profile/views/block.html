@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{vm.ngModel.title}}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="profile-block-entries">
+      <div ng-repeat="entry in vm.ngModel.data">
+        <block-entry ng-model="entry" block="vm.ngModel"></block-entry>
+        <hr>
+      </div>
+    </div>
+    <button class="btn btn-default btn-xs btn-block" ng-click="vm.addEntry()"><i class="glyphicon glyphicon-plus"></i> Add new entry</button>
+  </div>
+</div>

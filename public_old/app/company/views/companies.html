@@ -1,0 +1,22 @@
+<section class="companies">
+  <div class="jumbotron">
+    <h2>Companies list</h2>
+    <p class="lead">Here you can find all the registered companies.</p>
+  </div>
+
+  <div class="companies-list">
+    <div class="row">
+      <div class="company-item col-md-4" ng-repeat="company in vm.companies">
+        <h2>
+          <a href="#/companies/{{::company.slug}}/{{::company._id}}">
+            {{::company.name}}
+          </a>
+        </h2>
+        <p>
+          <span>{{::company.country}}</span>
+        </p>
+        <div>{{::company.summary}}</div>
+      </div>
+    </div>
+  </div>
+</section>
